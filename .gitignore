@@ -1,0 +1,4 @@
+*.py[co]
+
+main.db
+local_settings.py
