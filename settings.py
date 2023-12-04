@@ -2,6 +2,7 @@ import os
 
 GUILDS = []
 DISCORD_TOKEN = ''
+ERROR_CHANNEL_ID = None
 BOT_COLOUR = 0xFF6E00
 DATABASE_FILE = 'main.db'
 DMOJ_API_KEY = ''

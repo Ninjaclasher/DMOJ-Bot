@@ -222,6 +222,20 @@ async def postcontest(interaction: discord.Interaction, key: str):
     else:
         await interaction.followup.send(f"Cannot add you to {key}'s postcontest.", ephemeral=True)
 
+
+if settings.ERROR_CHANNEL_ID is not None:
+    @bot.tree.error
+    async def on_error(interaction, error):
+        import traceback
+        channel = bot.get_channel(settings.ERROR_CHANNEL_ID)
+        embed = discord.Embed(
+            colour=settings.BOT_COLOUR,
+            title='ERROR',
+            description='```{}```'.format(traceback.format_exc()[:3000]),
+        )
+        await channel.send(embed=embed)
+
+
 database.connect()
 database.create_tables([User])
 bot.run(settings.DISCORD_TOKEN)
